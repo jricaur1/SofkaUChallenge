@@ -6,6 +6,7 @@ import SofkaU.Challenge.repository.GameRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -26,6 +27,7 @@ public class GameServiceImpl implements GameService{
 
     @Override
     public Game createGame(Game game) {
+        game.setWhencreated(new Date());
         return gameRepository.save(game);
     }
 
