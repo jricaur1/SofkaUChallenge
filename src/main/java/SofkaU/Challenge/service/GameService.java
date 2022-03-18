@@ -9,6 +9,8 @@ public interface GameService {
     public List<Game> listAllGame();
     public Game getGame(Long id);
 
+
     public Game createGame(Game game);
+    public Game updatePoints(Game game, int points);
     public List<Game> findByPlayer(Player player);
 }

@@ -13,6 +13,7 @@ public class Game {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long game_id;
+    private int points;
 
     @Column(name="when_created")
     @Temporal(TemporalType.TIMESTAMP)

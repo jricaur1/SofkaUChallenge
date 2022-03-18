@@ -28,7 +28,17 @@ public class GameServiceImpl implements GameService{
     @Override
     public Game createGame(Game game) {
         game.setWhencreated(new Date());
+        game.setPoints(0);
         return gameRepository.save(game);
+    }
+
+    public Game updatePoints(Game game, int points){
+        Game gameDB = gameRepository.findById(game.getGame_id()).orElse(null);
+        if (gameDB == null){
+            return null;
+        }
+        gameDB.setPoints(points);
+        return gameRepository.save(gameDB);
     }
 
     @Override

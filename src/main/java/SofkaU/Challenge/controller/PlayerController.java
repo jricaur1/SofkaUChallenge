@@ -61,6 +61,9 @@ public class PlayerController {
                     .build();
             gameService.createGame(gameDB);
             System.out.println("Juego creado para " + playerDB.getUsername());
+            if (playerDB.getUsername().equals("Vicente")){
+                gameService.updatePoints(gameDB,100);
+            }
         }
 
 }
