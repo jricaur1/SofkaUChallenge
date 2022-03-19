@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "tbl_game")
+@Table(name = "tbl_answer")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,4 +20,8 @@ public class Answer {
 
     private String content;
     private boolean isRight;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "question_id")
+    private Question question;
 }

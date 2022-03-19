@@ -19,8 +19,5 @@ public class Category {
     private Long category_id;
     private int multiplier;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "question_id")
-    private Question question;
 
 }
