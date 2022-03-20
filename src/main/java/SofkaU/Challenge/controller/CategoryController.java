@@ -29,3 +29,4 @@ public class CategoryController {
         return categoryService.listAllCategory();
     }
 }
+
