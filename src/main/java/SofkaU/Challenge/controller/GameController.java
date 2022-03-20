@@ -96,9 +96,9 @@ public class GameController {
         System.out.println("¿Cuántas preguntas tendrá cada categoría? Use números enteros, mínimo 5:");
         try{
             int nQuestions = scan.nextInt();
-            //i2f (nQuestions < 5){
-              //  throw new Exception("Debe haber un mínimo de 5 preguntas.");
-            //}
+            if (nQuestions < 5){
+                throw new Exception("Debe haber un mínimo de 5 preguntas.");
+            }
             List<Category> categories = categoryController.createCategories();
             for (Category category: categories){
                 if(!questionController.createQuestions(nQuestions, category)){
