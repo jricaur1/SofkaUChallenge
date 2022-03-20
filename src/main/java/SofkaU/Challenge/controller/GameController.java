@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -59,6 +60,8 @@ public class GameController {
     }
 
     public void startGame(String name){
+        Scanner scan = new Scanner(System.in);
+        int aux = 0;
         try {
             if (name.equals("")){
                 throw new Exception("Ingrese su nombre.");
@@ -74,11 +77,23 @@ public class GameController {
             System.out.println("Juego creado para " + playerDB.getUsername());
             List<Category> categories = categoryController.getCategories();
             for (Category category : categories) {
+                gameService.updateCategory(gameDB, category);
                 List<Question> questions = questionController.getQuestions(category);
+                Collections.shuffle(questions);
                 for (Question question : questions) {
+                    if (aux != 0){
+                        System.out.println("Si desea seguir presione [1], si desea terminar el juego [2]");
+                        String playerContinue = scan.nextLine();
+                        if(playerContinue.equals("2")){
+                            throw new Exception("Juego terminado por jugador.");
+                        }
+                    }
                     if (questionController.answerQuestion(question)) {
                         gameService.updatePoints(gameDB,category.getMultiplier());
+
                         System.out.println("Respuesta correcta! Tu puntaje ahora es de " + gameDB.getPoints());
+                        aux++;
+
                     } else {
                         throw new Exception("Respuesta Incorrecta! Tu puntaje fue de " + gameDB.getPoints());
                     }
@@ -96,9 +111,9 @@ public class GameController {
         System.out.println("¿Cuántas preguntas tendrá cada categoría? Use números enteros, mínimo 5:");
         try{
             int nQuestions = scan.nextInt();
-            if (nQuestions < 5){
+            /*if (nQuestions < 5){
                 throw new Exception("Debe haber un mínimo de 5 preguntas.");
-            }
+            }*/
             List<Category> categories = categoryController.createCategories();
             for (Category category: categories){
                 if(!questionController.createQuestions(nQuestions, category)){

@@ -19,7 +19,7 @@ public class QuestionController {
         try {
             Scanner scan = new Scanner(System.in);
             for (int i = 0; i < nQuestions; i++) {
-                System.out.println("Ingrese la pregunta");
+                System.out.println("Ingrese la pregunta para la categoría " + category.getMultiplier());
                 String quesContent = "";
                 quesContent = scan.nextLine();
                 if(quesContent.equals("")){

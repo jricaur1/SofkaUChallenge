@@ -1,5 +1,6 @@
 package SofkaU.Challenge.service;
 
+import SofkaU.Challenge.entity.Category;
 import SofkaU.Challenge.entity.Game;
 import SofkaU.Challenge.entity.Player;
 
@@ -11,6 +12,7 @@ public interface GameService {
 
 
     public Game createGame(Game game);
+    public Game updateCategory(Game game, Category category);
     public Game updatePoints(Game game, int multiplier);
     public List<Game> findByPlayer(Player player);
 }

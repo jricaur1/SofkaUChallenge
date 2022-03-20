@@ -14,7 +14,7 @@ public class CategoryController {
     private final CategoryService categoryService;
     public List<Category> createCategories(){
         List<Category> categories = new ArrayList<>();
-        for (int i = 1; i <= 5; i++){
+        for (int i = 1; i <= 1; i++){
             categories.add(Category.builder()
                     .multiplier(i)
                     .build());

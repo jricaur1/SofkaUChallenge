@@ -1,5 +1,6 @@
 package SofkaU.Challenge.service;
 
+import SofkaU.Challenge.entity.Category;
 import SofkaU.Challenge.entity.Game;
 import SofkaU.Challenge.entity.Player;
 import SofkaU.Challenge.repository.GameRepository;
@@ -32,6 +33,17 @@ public class GameServiceImpl implements GameService{
         return gameRepository.save(game);
     }
 
+    @Override
+    public Game updateCategory(Game game, Category category) {
+        Game gameDB = gameRepository.findById(game.getGame_id()).orElse(null);
+        if (gameDB == null){
+            return null;
+        }
+        gameDB.setCategory(category);
+        return gameRepository.save(gameDB);
+    }
+
+    @Override
     public Game updatePoints(Game game, int multiplier){
         Game gameDB = gameRepository.findById(game.getGame_id()).orElse(null);
         if (gameDB == null){
