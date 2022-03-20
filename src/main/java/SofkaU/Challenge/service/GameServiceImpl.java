@@ -32,12 +32,12 @@ public class GameServiceImpl implements GameService{
         return gameRepository.save(game);
     }
 
-    public Game updatePoints(Game game, int points){
+    public Game updatePoints(Game game, int multiplier){
         Game gameDB = gameRepository.findById(game.getGame_id()).orElse(null);
         if (gameDB == null){
             return null;
         }
-        gameDB.setPoints(points);
+        gameDB.setPoints(gameDB.getPoints()+ (100*multiplier));
         return gameRepository.save(gameDB);
     }
 

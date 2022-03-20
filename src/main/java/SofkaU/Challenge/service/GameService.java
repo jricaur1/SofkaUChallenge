@@ -11,6 +11,6 @@ public interface GameService {
 
 
     public Game createGame(Game game);
-    public Game updatePoints(Game game, int points);
+    public Game updatePoints(Game game, int multiplier);
     public List<Game> findByPlayer(Player player);
 }
